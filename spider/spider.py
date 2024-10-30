@@ -38,9 +38,7 @@ payload['pageSize'] = total_records
 response = requests.post(url, headers=headers, json=payload, verify=False)
 data_list = response.json()['content']['list']
 
-# Generate a better file name with timestamp
-filename = datetime.datetime.now().strftime("data_%Y%m%d_%H%M%S.json.gz")
-
-# Save the list directly to a compressed file
-with gzip.open(filename, 'wt', encoding='utf-8') as f_out:
+# Save the list directly to a JSON file without compression
+filename = datetime.datetime.now().strftime("data_%Y%m%d_%H%M%S.json")
+with open(filename, 'w', encoding='utf-8') as f_out:
     json.dump(data_list, f_out, ensure_ascii=False, indent=4)

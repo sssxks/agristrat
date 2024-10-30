@@ -30,7 +30,7 @@ jobs:
         python spider/spider.py
 
     - name: Upload results
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: spider-results
-        path: data_*.json.gz
+        path: spider/data_*.json
